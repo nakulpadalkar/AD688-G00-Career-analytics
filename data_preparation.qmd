@@ -1,0 +1,106 @@
+---
+title: Data Preperation
+---
+
+```{python}
+#| label: standard-data-loader
+#| eval: true
+#| echo: true
+#| output: false
+#| code-fold: true
+
+# Imports and shared setup
+import os
+import sys
+from pathlib import Path
+from textwrap import fill
+
+import matplotlib.pyplot as plt
+import pandas as pd
+import plotly.express as px
+import plotly.io as pio
+import seaborn as sns
+from IPython.display import Markdown, display
+from matplotlib.ticker import StrMethodFormatter
+from pyspark.sql import SparkSession
+from pyspark.sql import functions as F
+from pyspark.sql.types import IntegerType, StringType, StructField, StructType
+
+# Locate course helpers before importing them.
+for code_root in (Path.cwd().resolve(), *Path.cwd().resolve().parents):
+    if (code_root / "_system_code" / "__init__.py").is_file():
+        if str(code_root) not in sys.path:
+            sys.path.insert(0, str(code_root))
+        break
+else:
+    raise ModuleNotFoundError(
+        "Place the course _system_code folder beside this notebook or in a parent folder."
+    )
+
+from _system_code.column_audit import (
+    add_dimension_key,
+    column_plan,
+    profile_columns,
+    reviewed_drop_columns,
+)
+from _system_code.paths import resolve_jobs_data_dir
+
+USE_SAMPLE = True  # False loads all files and rows.
+SAMPLE_ROWS = 1_000  # Used only when USE_SAMPLE is True.
+
+# Find the files before starting Spark.
+data_dir = resolve_jobs_data_dir()
+parquet_files = sorted(data_dir.glob("jobs_2026_part_*.parquet"))
+if not parquet_files:
+    raise FileNotFoundError(f"No Parquet files found in {data_dir}; check your dataset path.")
+if USE_SAMPLE:
+    parquet_files = parquet_files[:1]
+
+os.environ["PYSPARK_PYTHON"] = sys.executable
+os.environ["PYSPARK_DRIVER_PYTHON"] = sys.executable
+
+spark = (
+    SparkSession.builder.config("spark.ui.enabled", "false")
+    .appName("M02_A_Parquet")
+    .master("local[2]")
+    .getOrCreate()
+)
+spark.conf.set("spark.sql.execution.arrow.pyspark.enabled", "false")
+
+df = spark.read.parquet(*[path.as_uri() for path in parquet_files])
+if USE_SAMPLE:
+    df = df.limit(SAMPLE_ROWS)
+# If your exercise uses lowercase names, normalize before its analysis:
+# df = df.toDF(*[column.lower() for column in df.columns])
+df.createOrReplaceTempView("job_postings")
+jobs_df = df  # Reuse the loaded data in later preparation cells.
+pio.renderers.default = "notebook"
+
+print(
+    {
+        "source": "parquet",
+        "folder": str(data_dir),
+        "partitions": len(parquet_files),
+        "sample": USE_SAMPLE,
+    }
+)
+```
+
+<!-- solution-cell: {"id": "standard-loader-2", "type": "markdown"} -->
+# Verify the Data {.unnumbered}
+
+Inspect the schema and first five rows.
+
+<!-- solution-cell: {"id": "standard-loader-3", "type": "code"} -->
+```{python}
+#| label: standard-data-verification
+#| eval: true
+#| echo: true
+#| output: false
+
+# Show the schema (column names and data types)
+df.printSchema()
+
+# Display the first five rows
+# df.show(5)
+```

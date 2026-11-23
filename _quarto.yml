@@ -12,6 +12,8 @@ website:
     left:
       - href: index.qmd
         text: Home
+      - href: data_preparation.qmd
+        text: Data Preparation
 
 format:
   html:
