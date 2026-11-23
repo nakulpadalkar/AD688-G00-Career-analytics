@@ -4,7 +4,7 @@ title: Data Preperation
 
 ```{python}
 #| label: standard-data-loader
-#| eval: true
+#| eval: false
 #| echo: true
 #| output: false
 #| code-fold: true
@@ -94,7 +94,7 @@ Inspect the schema and first five rows.
 <!-- solution-cell: {"id": "standard-loader-3", "type": "code"} -->
 ```{python}
 #| label: standard-data-verification
-#| eval: true
+#| eval: false
 #| echo: true
 #| output: false
 
