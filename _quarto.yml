@@ -14,6 +14,10 @@ website:
         text: Home
       - href: data_preparation.qmd
         text: Data Preparation
+      - href: palmer_penguins.ipynb
+        text: Palmer Penguins EDA
+      - href: palmer_penguins_classification.ipynb
+        text: Palmer Penguins Classification
 
 format:
   html:
