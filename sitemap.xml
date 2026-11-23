@@ -2,10 +2,18 @@
 <urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">
   <url>
     <loc>https://nakulpadalkar.github.io/AD688-G00-Career-analytics/data_preparation.html</loc>
-    <lastmod>2026-11-23T21:25:30.446Z</lastmod>
+    <lastmod>2026-11-23T21:31:30.739Z</lastmod>
+  </url>
+  <url>
+    <loc>https://nakulpadalkar.github.io/AD688-G00-Career-analytics/palmer_penguins.html</loc>
+    <lastmod>2026-11-23T21:31:30.740Z</lastmod>
+  </url>
+  <url>
+    <loc>https://nakulpadalkar.github.io/AD688-G00-Career-analytics/palmer_penguins_classification.html</loc>
+    <lastmod>2026-11-23T21:31:30.742Z</lastmod>
   </url>
   <url>
     <loc>https://nakulpadalkar.github.io/AD688-G00-Career-analytics/index.html</loc>
-    <lastmod>2026-11-23T21:25:30.446Z</lastmod>
+    <lastmod>2026-11-23T21:31:30.739Z</lastmod>
   </url>
 </urlset>
