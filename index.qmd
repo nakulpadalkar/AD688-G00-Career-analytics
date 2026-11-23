@@ -1,0 +1,13 @@
+---
+title: "Research Introduction"
+bibliography: references.bib
+format:
+    html:
+        toc: true
+---
+
+# Introduction
+
+We are evalating the career pathways in to NAICS 5416 (Management, Scientific, and Technical Consulting Services).
+
+@simard2006measuring examines the methodological challenges involved in measuring the management, scientific, and technical consulting services industry in Canada, emphasizing the critical role of statistical infrastructure in producing reliable service-sector data. The study describes Statistics Canada's Unified Enterprise Survey (UES), an integrated framework that combines survey data, administrative tax records, standardized classifications such as NAICS and NAPCS, and a centralized business register to improve the consistency and comparability of industry statistics. A key contribution of the paper is its discussion of business frame quality, highlighting the unusually high rates of industry misclassification, firm births, and firm deaths within the consulting sector, which can substantially bias industry estimates. Simard argues that maintaining an accurate business register and implementing continuous frame-cleaning procedures are essential for generating robust measures of industry output. The paper also documents the transition toward modular survey designs, increased reliance on administrative data, and closer alignment with national accounting requirements. Overall, the study provides an important methodological perspective on service-industry measurement, demonstrating how classification systems, sampling strategies, administrative data integration, and survey redesign influence the accuracy of economic statistics for knowledge-intensive consulting industries.
